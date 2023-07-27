@@ -7,14 +7,20 @@
 
 class Solution(object):
     def maxProfit(self, prices):
+        if not prices or len(prices) < 2:
+            return 0
+
         left = 0
         right = 1
         max_profit = 0
+
         while right < len(prices):
-            currentProfit = prices[right] - prices[left]
-            if prices[left] < prices[right]:
-                max_profit = max(currentProfit, max_profit)
-            else:
+            if prices[left] > prices[right]:
                 left = right
+            max_profit = max(max_profit, prices[right] - prices[left])
             right += 1
+
+        if max_profit <= 0:
+            return 0
+
         return max_profit

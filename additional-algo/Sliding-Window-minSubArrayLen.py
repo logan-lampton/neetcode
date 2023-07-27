@@ -15,24 +15,24 @@
 # minSubArrayLen([4, 3, 3, 8, 1, 2, 3], 11) // 2
 # minSubArrayLen([1,4,16,22,5,7,8,9,10],95) // 0
 
+class Solution(object):
+    def minSubArrayLen(self, target, nums):
+        if not nums:
+            return 0
 
-def minSubArrayLen(array, integer):
-    if not array:
-        return 0
+        min_length = len(nums) + 1  # Initialize min_length to a value greater than the array length
+        left = 0
+        current_sum = 0
 
-    min_length = len(array)
-    left = 0
-    current_sum = 0
+        for right in range(len(nums)):
+            current_sum += nums[right]
 
-    for right in range(len(array)):
-        current_sum += array[right]
+            while current_sum >= target:
+                min_length = min(min_length, right - left + 1)
+                current_sum -= nums[left]
+                left += 1
 
-        while current_sum >= integer:
-            min_length = min(min_length, right - left + 1)
-            current_sum -= array[left]
-            left += 1
+        if min_length > len(nums):  # Check if no subarray found
+            return 0
 
-    if min_length >= len(array) + 1:
-        return 0
-    else:
         return min_length
