@@ -79,10 +79,63 @@ class LinkedList:
                 self.tail = None
         return unshifted_node
 
+    def set(self, index, val):
+        if index >= self.length or index < 0:
+            return None
+        else:
+            curNode = self.get(index)
+            curNode.val = val
+            return curNode.val
+
+    def insert(self, index, val):
+        if index == self.length:
+            self.push(val)
+        elif index == 0:
+            self.shift(val)
+        elif index < 0 or index > self.length:
+            return None
+        else:
+            newNode = Node(val)
+            prevNode = self.get(index - 1)
+            nextNode = self.get(index)
+            prevNode.next = newNode
+            newNode.next = nextNode
+            self.length += 1
+            return self
+
+    def remove(self, index):
+        if index == 0:
+            return self.unshift()
+        elif index == self.length - 1:
+            return self.pop()
+        elif index < 0 or index >= self.length:
+            return None
+        else:
+            removeNode = self.get(index)
+            prevNode = self.get(index - 1)
+            nextNode = self.get(index + 1)
+            prevNode.next = nextNode
+            removeNode.next = None
+            self.length -= 1
+            return removeNode
+
+    def reverse(self):
+        curNode = self.head
+        prevNode = None
+        while curNode is not None:
+            nextNode = curNode.next
+            curNode.next = prevNode
+            prevNode = curNode
+            curNode = nextNode
+        self.head = prevNode
+        return self.display()
+
 
 list = LinkedList()
 
 list.push(10)
-
-print(list.unshift().val)
+list.push(4)
+list.push(18)
+list.push(23)
+print(list.reverse())
 list.display()
