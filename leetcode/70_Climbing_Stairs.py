@@ -17,10 +17,8 @@
 # 2. 1 step + 2 steps
 # 3. 2 steps + 1 step
 
-def climbStairs(self, n):
-    steps = {}
-    steps[1] = 1
-    steps[2] = 2
+def climbStairs(n):
+    steps = {1: 1, 2: 2}
 
     def climb(n):
         if n in steps:
