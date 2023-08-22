@@ -122,12 +122,15 @@ class LinkedList:
     def reverse(self):
         curNode = self.head
         prevNode = None
+        # swap head and tail
+        curHead = self.head
+        self.head = self.tail
+        self.tail = curHead
         while curNode is not None:
             nextNode = curNode.next
             curNode.next = prevNode
             prevNode = curNode
             curNode = nextNode
-        self.head = prevNode
         return self.display()
 
 
@@ -137,5 +140,6 @@ list.push(10)
 list.push(4)
 list.push(18)
 list.push(23)
+list.display()
 print(list.reverse())
 list.display()
