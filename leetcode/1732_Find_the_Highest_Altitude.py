@@ -18,9 +18,7 @@ class Solution:
     def largestAltitude(self, gain: List[int]) -> int:
         heighest_point = 0
         altitude = [0]
-
-        if heighest_point == 0:
-            altitude.append(gain[0])
+        altitude.append(gain[0])
 
         for i in range(1, len(gain)):
             new_altitude = altitude[-1] + gain[i]
