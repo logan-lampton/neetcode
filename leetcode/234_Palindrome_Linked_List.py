@@ -18,7 +18,7 @@ class Solution:
             values.append(head.val)
             head = head.next
 
-        # create reverse values list
+        # left and right pointers
         left = 0
         right = len(values) - 1
 
