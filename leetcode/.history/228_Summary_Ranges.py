@@ -29,7 +29,7 @@
 
 
 class Solution:
-    def summaryRanges(self, nums: List[int]) -> List[str]:
+    def summaryRanges(self, nums: [int]) -> [str]:
         ranges = []
         i = 0
         while i < len(nums):
