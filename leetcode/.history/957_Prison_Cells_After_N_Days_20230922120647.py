@@ -49,7 +49,7 @@ class Solution:
         while n > 0:
             # make the cells list into a tuple so that it can be used as a key
             current_cells = tuple(cells)
-            # if the current cells are in the seen dictionary, set n to be the remainder of the dictionary at current cells - n
+            # if the current cells are in the seen dictionary, set n to be the remainer of the dictionary at current cells - n
             if current_cells in seen:
                 n %= seen[current_cells] - n
             seen[current_cells] = n
