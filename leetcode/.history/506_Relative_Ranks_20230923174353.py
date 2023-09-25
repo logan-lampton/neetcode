@@ -22,7 +22,7 @@
 
 
 class Solution:
-    def findRelativeRanks(self, score: [int]) -> [str]:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
         # sort the score; use reverse, since the higher the score, the better
         sorted_score = sorted(score, reverse=True)
 
