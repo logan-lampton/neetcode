@@ -27,18 +27,11 @@
 class Solution:
     def successfulPairs(self, spells: [int], potions: [int], success: int) -> [int]:
         potions.sort()
-        pairs = []
+        answer = []
 
         for spell in spells:
             left = 0
             right = len(potions)
-
-            if potions[0] * spell >= success:
-                pairs.append(len(potions))
-                continue
-            if potions[-1] * spell < success:
-                pairs.append(0)
-                continue
 
             while left < right:
                 mid = left + (right - left) // 2
@@ -46,6 +39,6 @@ class Solution:
                     right = mid
                 else:
                     left = mid + 1
-            pairs.append(len(potions) - left)
+            answer.append(len(potions) - left)
 
-        return pairs
+        return answer
