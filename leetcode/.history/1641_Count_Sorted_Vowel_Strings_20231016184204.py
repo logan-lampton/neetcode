@@ -17,28 +17,27 @@
 # Example 3:
 # Input: n = 33
 # Output: 66045
-
+ 
 # Constraints:
-# 1 <= n <= 50
-
+# 1 <= n <= 50 
 
 class Solution:
     def countVowelStrings(self, n: int) -> int:
+
         dp = [[0] * 5 for i in range(n)]
         dp[0] = [1] * 5
 
         for i in range(1, len(dp)):
             # a
-            dp[i][0] = (
-                dp[i - 1][0] + dp[i - 1][1] + dp[i - 1][2] + dp[i - 1][3] + dp[i - 1][4]
-            )
+            dp[i][0] = dp[i-1][0] + dp[i-1][1] + dp[i-1][2] + dp[i-1][3] + dp[i-1][4] 
             # e
-            dp[i][1] = dp[i - 1][1] + dp[i - 1][2] + dp[i - 1][3] + dp[i - 1][4]
+            dp[i][1] = dp[i-1][1] + dp[i-1][2] + dp[i-1][3] + dp[i-1][4]
             # i
-            dp[i][2] = dp[i - 1][2] + dp[i - 1][3] + dp[i - 1][4]
+            dp[i][2] = dp[i-1][2] + dp[i-1][3] + dp[i-1][4]
             # o
-            dp[i][3] = dp[i - 1][3] + dp[i - 1][4]
+            dp[i][3] = dp[i-1][3] + dp[i-1][4]
             # u
-            dp[i][4] = dp[i - 1][4]
-
+            dp[i][4] = dp[i-1][4]
+        
         return sum(dp[-1])
+            
