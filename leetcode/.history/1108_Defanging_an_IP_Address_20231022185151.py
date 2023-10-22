@@ -13,7 +13,6 @@
 # Constraints:
 # The given address is a valid IPv4 address.
 
-
 class Solution:
     def defangIPaddr(self, address: str) -> str:
         output = ""
