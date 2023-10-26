@@ -37,9 +37,6 @@ class TreeNode:
         self.left = left
         self.right = right
 
-    def __str__(self):
-        return f"{self.val}, {self.left}, {self.right}"
-
 
 class Solution:
     def constructMaximumBinaryTree(self, nums):

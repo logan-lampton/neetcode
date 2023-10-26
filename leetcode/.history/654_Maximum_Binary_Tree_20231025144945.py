@@ -2,8 +2,8 @@
 # from nums using the following algorithm:
 
 # Create a root node whose value is the maximum value in nums.
-# Recursively build the left subtree on the sub-array prefix to the left of the maximum value.
-# Recursively build the right subtree on the sub-array suffix to the right of the maximum value.
+# Recursively build the left subtree on the subarray prefix to the left of the maximum value.
+# Recursively build the right subtree on the subarray suffix to the right of the maximum value.
 # Return the maximum binary tree built from nums.
 
 # Example 1:
@@ -30,19 +30,19 @@
 # All integers in nums are unique.
 
 
-# # Definition for a binary tree node.
+# Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
-    def __str__(self):
-        return f"{self.val}, {self.left}, {self.right}"
+
+nums = [3, 2, 1, 6, 0, 5]
 
 
 class Solution:
-    def constructMaximumBinaryTree(self, nums):
+    def constructMaximumBinaryTree(self, nums: [int]) -> [TreeNode]:
         def BFS(arr):
             if not arr:
                 return None
@@ -61,11 +61,4 @@ class Solution:
 
             return root
 
-        return BFS(nums)
-
-
-test = Solution()
-
-tree = test.constructMaximumBinaryTree(nums=[3, 2, 1, 6, 0, 5])
-
-print(tree)
+        print(BFS(nums))

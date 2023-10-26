@@ -29,43 +29,38 @@
 # 0 <= nums[i] <= 1000
 # All integers in nums are unique.
 
+print("Hi")
+
+# nums = [3, 2, 1, 6, 0, 5]
+
 
 # # Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
-    def __str__(self):
-        return f"{self.val}, {self.left}, {self.right}"
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 
 
-class Solution:
-    def constructMaximumBinaryTree(self, nums):
-        def BFS(arr):
-            if not arr:
-                return None
+# class Solution:
+#     def constructMaximumBinaryTree(self, nums):
+#         def BFS(arr):
+#             if not arr:
+#                 return None
 
-            max_value = float("-inf")
-            mv_index = -1
+#             max_value = float("-inf")
+#             mv_index = -1
 
-            for i in range(len(arr)):
-                if arr[i] > max_value:
-                    max_value = arr[i]
-                    mv_index = i
+#             for i in range(len(arr)):
+#                 if arr[i] > max_value:
+#                     max_value = arr[i]
+#                     mv_index = i
 
-            root = TreeNode(max_value)
-            root.left = BFS(arr[:mv_index])
-            root.right = BFS(arr[mv_index + 1 :])
+#             root = TreeNode(max_value)
+#             root.left = BFS(arr[:mv_index])
+#             root.right = BFS(arr[mv_index + 1 :])
 
-            return root
+#             return root
 
-        return BFS(nums)
-
-
-test = Solution()
-
-tree = test.constructMaximumBinaryTree(nums=[3, 2, 1, 6, 0, 5])
-
-print(tree)
+#         print(BFS(nums))
+#         return BFS(nums)

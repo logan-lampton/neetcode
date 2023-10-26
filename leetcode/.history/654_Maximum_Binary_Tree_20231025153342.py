@@ -38,7 +38,7 @@ class TreeNode:
         self.right = right
 
     def __str__(self):
-        return f"{self.val}, {self.left}, {self.right}"
+        return f"TreeNode({self.val})"
 
 
 class Solution:
@@ -66,6 +66,4 @@ class Solution:
 
 test = Solution()
 
-tree = test.constructMaximumBinaryTree(nums=[3, 2, 1, 6, 0, 5])
-
-print(tree)
+test.constructMaximumBinaryTree(nums=[3, 2, 1, 6, 0, 5])

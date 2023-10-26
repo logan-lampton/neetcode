@@ -29,16 +29,15 @@
 # 0 <= nums[i] <= 1000
 # All integers in nums are unique.
 
+nums = [3, 2, 1, 6, 0, 5]
 
-# # Definition for a binary tree node.
+
+# Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
-
-    def __str__(self):
-        return f"{self.val}, {self.left}, {self.right}"
 
 
 class Solution:
@@ -62,10 +61,3 @@ class Solution:
             return root
 
         return BFS(nums)
-
-
-test = Solution()
-
-tree = test.constructMaximumBinaryTree(nums=[3, 2, 1, 6, 0, 5])
-
-print(tree)

@@ -30,19 +30,19 @@
 # All integers in nums are unique.
 
 
-# # Definition for a binary tree node.
+# Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
-    def __str__(self):
-        return f"{self.val}, {self.left}, {self.right}"
+
+nums = [3, 2, 1, 6, 0, 5]
 
 
 class Solution:
-    def constructMaximumBinaryTree(self, nums):
+    def constructMaximumBinaryTree(self, nums: [int]) -> [TreeNode]:
         def BFS(arr):
             if not arr:
                 return None
@@ -61,11 +61,6 @@ class Solution:
 
             return root
 
-        return BFS(nums)
+        answer = BFS(nums)
 
-
-test = Solution()
-
-tree = test.constructMaximumBinaryTree(nums=[3, 2, 1, 6, 0, 5])
-
-print(tree)
+        print("Test")

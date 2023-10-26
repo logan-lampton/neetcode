@@ -38,7 +38,7 @@ class TreeNode:
         self.right = right
 
     def __str__(self):
-        return f"{self.val}, {self.left}, {self.right}"
+        return f"TreeNode({self.val})"
 
 
 class Solution:

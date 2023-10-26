@@ -66,6 +66,6 @@ class Solution:
 
 test = Solution()
 
-tree = test.constructMaximumBinaryTree(nums=[3, 2, 1, 6, 0, 5])
-
-print(tree)
+tree = test.constructMaximumBinaryTree(nums=[3, 2, 1, 6, 0, 5]).BFS(
+    nums=[3, 2, 1, 6, 0, 5]
+)
