@@ -28,7 +28,7 @@
 # 1 <= mat[i][j] <= 100
 
 
-def diagonalSum(mat: [[int]]) -> int:
+def diagonalSum(self, mat: [[int]]) -> int:
     mat_sum = 0
 
     for i in range(len(mat)):
