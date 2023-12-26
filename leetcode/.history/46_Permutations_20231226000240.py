@@ -14,7 +14,7 @@
 # Output: [[1]]
 
 
-def permute(nums: [int]) -> [[int]]:
+def permute(self, nums: List[int]) -> List[List[int]]:
     def backtrack(nums, path):
         if not nums:
             return
