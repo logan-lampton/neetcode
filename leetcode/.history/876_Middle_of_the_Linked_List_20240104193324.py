@@ -39,25 +39,3 @@ class Solution:
 
         for _ in range(int(count // 2)):
             current_node = current_node.next
-
-
-# Version using an array that I came up with:
-# def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
-
-#     curr = head
-#     full_array = []
-
-#     while curr:
-#         next_node = curr.next
-#         full_array.append(curr.val)
-#         curr = next_node
-
-#     target = len(full_array) // 2 + 1
-
-#     curr = head
-
-#     for i in range(target - 1):
-#         next_node = curr.next
-#         curr = next_node
-
-#     return curr
