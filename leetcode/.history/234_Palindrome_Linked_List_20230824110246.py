@@ -9,9 +9,9 @@
 # Input: head = [1,2]
 # Output: false
 
-
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
+
         # convert linked list to list of values
         values = []
         while head:
@@ -30,27 +30,3 @@ class Solution:
             right -= 1
 
         return True
-
-    # Slow/Fast Method:
-    # slow = head
-    # fast = head
-
-    # while fast and fast.next:
-    #     fast = fast.next.next
-    #     slow = slow.next
-
-    # prev = None
-    # curr = slow
-    # while curr:
-    #     next_node = curr.next
-    #     curr.next = prev
-    #     prev = curr
-    #     curr = next_node
-
-    # while prev:
-    #     if head.val != prev.val:
-    #         return False
-    #     head = head.next
-    #     prev = prev.next
-
-    # return True
