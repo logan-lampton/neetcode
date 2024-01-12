@@ -11,7 +11,7 @@
 
 
 class Solution:
-    def isPalindrome(self, head: [ListNode]) -> bool:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
         # convert linked list to list of values
         values = []
         while head:
