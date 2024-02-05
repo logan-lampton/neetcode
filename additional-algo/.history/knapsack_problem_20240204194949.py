@@ -47,16 +47,16 @@ def bottom_up_knapsack(capacity, items):
     dp = [0 for i in range(capacity + 1)]
 
     for i in range(1, capacity + 1):
-        max_val = dp[i - 1]
+        max_val = float('-inf')
         for item in items:
             weight, value = item
             if i - weight >= 0:
                 current_val = dp[i - weight] + value
                 if current_val > max_val:
                     max_val = current_val
-        dp[i] = max_val
+                    dp[i] = max_val
         
-    return dp[capacity]
+        return dp[capacity]
     
 print(bottom_up_knapsack(5, [
     [2, 4],
