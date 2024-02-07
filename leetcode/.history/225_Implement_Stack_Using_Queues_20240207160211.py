@@ -33,31 +33,35 @@
 
 from collections import deque
 
-
 class MyStack:
 
     def __init__(self):
         self.front = deque()
         self.back = deque()
 
+
     def push(self, x: int) -> None:
         self.front.append(x)
+       
 
     def pop(self) -> int:
         while len(self.front) > 1:
             self.back.append(self.front.popleft())
-
+        
         answer = self.front.pop()
-
+        
         self.front, self.back = self.back, self.front
 
         return answer
 
+
     def top(self) -> int:
         return self.front[-1]
+        
 
     def empty(self) -> bool:
         return not self.front
+      
 
 
 # Your MyStack object will be instantiated and called as such:
