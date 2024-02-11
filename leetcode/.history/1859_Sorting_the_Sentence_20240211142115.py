@@ -57,16 +57,4 @@ class Solution:
         return answer[0:-1]
 
 
-# Improved approach
-class Solution:
-    def sortSentence(self, s: str) -> str:
-        words = s.split()
-
-        answer = [None] * len(words)
-
-        for word in words:
-            # index must start at 0, thus - 1 to the number in the word
-            index = int(word[-1]) - 1
-            answer[index] = word[:-1]
-
-        return " ".join(answer)
+# Better approach
