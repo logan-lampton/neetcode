@@ -42,3 +42,8 @@ class Solution:
             output.append(len(prefix) - len(suffix))
 
         return output
+
+solution = Solution()
+nums = [1,2,3,4,5]
+
+solution.distinctDifferenceArray(nums)
