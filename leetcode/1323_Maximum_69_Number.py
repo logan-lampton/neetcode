@@ -25,3 +25,24 @@
 # Constraints:
 # 1 <= num <= 104
 # num consists of only 6 and 9 digits.
+
+
+class Solution:
+    def maximum69Number(self, num: int) -> int:
+
+        string_num = str(num)
+        changes = 1
+        final_number = []
+
+        for number in string_num:
+            if number != "9" and changes > 0:
+                final_number.append("9")
+                changes -= 1
+            else:
+                final_number.append(number)
+
+        return int("".join(final_number))
+
+
+solution = Solution()
+print(solution.maximum69Number(9669))
