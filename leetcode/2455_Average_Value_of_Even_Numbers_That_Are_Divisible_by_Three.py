@@ -16,9 +16,10 @@
 # 1 <= nums.length <= 1000
 # 1 <= nums[i] <= 1000
 
+
 class Solution:
-    def averageValue(self, nums: List[int]) -> int:
-        
+    def averageValue(self, nums: [int]) -> int:
+
         total = 0
         count = 0
 
@@ -26,10 +27,11 @@ class Solution:
             if num % 3 == 0 and num % 2 == 0:
                 total += num
                 count += 1
-        
+
         if total != 0 and count != 0:
             return total // count
         return 0
 
+
 solution = Solution()
-print(solution.averageValue([1,3,6,10,12,15]))
+print(solution.averageValue([1, 3, 6, 10, 12, 15]))
