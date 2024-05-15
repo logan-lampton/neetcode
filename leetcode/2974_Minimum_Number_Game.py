@@ -24,19 +24,32 @@
 
 class Solution:
     def numberGame(self, nums: [int]) -> [int]:
-
+        arr = []
         nums.sort()
-        left = 0
-        right = 1
+        while nums:
+            alice = nums.pop(0)
+            bob = nums.pop(0)
+            arr.append(bob)
+            arr.append(alice)
+        return arr
 
-        result = []
 
-        print(nums)
+solution = Solution()
+print(solution.numberGame(nums=[5, 4, 2, 3]))
 
-        for i in range(len(nums) // 2):
-            result.append(nums[right])
-            result.append(nums[left])
-            right += 2
-            left += 2
 
-        return result
+# nums.sort()
+# left = 0
+# right = 1
+
+# result = []
+
+# print(nums)
+
+# for i in range(len(nums) // 2):
+#     result.append(nums[right])
+#     result.append(nums[left])
+#     right += 2
+#     left += 2
+
+# return result
