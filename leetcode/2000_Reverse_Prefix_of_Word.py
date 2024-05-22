@@ -29,23 +29,32 @@
 
 class Solution:
     def reversePrefix(self, word: str, ch: str) -> str:
-        
-        through_char = ""
-        additional_string = ''
-
-        if ch not in word:
-            return word
-
         for i in range(len(word)):
-            if word[i] != ch:
-                through_char += word[i]
-            else:
-                through_char += word[i]
-                additional_string = word[i + 1::]
-                break
+          if word[i] == ch:
+              return ch + word[0:i][::-1] + word[i+1::]
+        return word
+
+solution = Solution()
+print(solution.reversePrefix(word="abcdefd", ch="d"))
+
+# class Solution:
+#     def reversePrefix(self, word: str, ch: str) -> str:
+        # through_char = ""
+        # additional_string = ''
+
+        # if ch not in word:
+        #     return word
+
+        # for i in range(len(word)):
+        #     if word[i] != ch:
+        #         through_char += word[i]
+        #     else:
+        #         through_char += word[i]
+        #         additional_string = word[i + 1::]
+        #         break
         
-        reverse_pre = ""
-        for i in range(len(through_char) -1, -1, -1):
-            reverse_pre += through_char[i]
+        # reverse_pre = ""
+        # for i in range(len(through_char) -1, -1, -1):
+        #     reverse_pre += through_char[i]
         
-        return reverse_pre + additional_string
+        # return reverse_pre + additional_string
