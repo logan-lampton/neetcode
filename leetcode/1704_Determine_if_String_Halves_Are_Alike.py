@@ -23,24 +23,43 @@
 
 class Solution:
     def halvesAreAlike(self, s: str) -> bool:
+        a_vowels = 0
+        b_vowels = 0
+        vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
 
-        first_half = s[0 : int(len(s) / 2)]
-        second_half = s[int(len(s) / 2) :]
+        mid_index = int(len(s) / 2)
+        a = s[:mid_index]
+        b = s[mid_index : len(s)]
+        
+        for i in range(len(a)):
+            if a[i] in vowels:
+                a_vowels += 1
+            if b[i] in vowels:
+                b_vowels += 1
+        
+        return a_vowels == b_vowels
 
-        vowels = {"a", "A", "e", "E", "i", "I", "o", "O", "u", "U"}
 
-        first_count = 0
-        second_count = 0
+# class Solution:
+#     def halvesAreAlike(self, s: str) -> bool:
 
-        for char in first_half:
-            if char in vowels:
-                first_count += 1
+#         first_half = s[0 : int(len(s) / 2)]
+#         second_half = s[int(len(s) / 2) :]
 
-        for char in second_half:
-            if char in vowels:
-                second_count += 1
+#         vowels = {"a", "A", "e", "E", "i", "I", "o", "O", "u", "U"}
 
-        return first_count == second_count
+#         first_count = 0
+#         second_count = 0
+
+#         for char in first_half:
+#             if char in vowels:
+#                 first_count += 1
+
+#         for char in second_half:
+#             if char in vowels:
+#                 second_count += 1
+
+#         return first_count == second_count
 
 
 solution = Solution()
