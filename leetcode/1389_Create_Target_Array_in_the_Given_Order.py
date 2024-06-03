@@ -41,7 +41,7 @@
 
 
 class Solution:
-    def createTargetArray(self, nums: List[int], index: List[int]) -> List[int]:
+    def createTargetArray(self, nums: [int], index: [int]) -> [int]:
         output = []
 
         for i in range(len(nums)):
