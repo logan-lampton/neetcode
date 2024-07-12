@@ -29,7 +29,11 @@
 
 class Solution:
     def mostWordsFound(self, sentences: [str]) -> int:
-        max_words = float("-inf")
+        most_words = 0
         for sentence in sentences:
-            max_words = max(sentence.count(" ") + 1, max_words)
-        return max_words
+            most_words = max(len(sentence.split()), most_words)
+        return most_words
+
+solution = Solution()
+print(solution.mostWordsFound(sentences = ["alice and bob love leetcode", "i think so too", "this is great thanks very much"]))
+print(solution.mostWordsFound(sentences = ["please wait", "continue to fight", "continue to win"]))
