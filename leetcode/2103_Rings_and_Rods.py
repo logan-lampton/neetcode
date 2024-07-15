@@ -36,21 +36,22 @@
 
 class Solution:
     def countPoints(self, rings: str) -> int:
-        hash_map = {}
-
+        dictionary = {}
         for i in range(0, len(rings) - 1, 2):
             color = rings[i]
-            rod = rings[i + 1]
-            if rod not in hash_map:
-                hash_map[rod] = []
-            hash_map[rod].append(color)
+            ring = rings[i + 1]
+            if ring not in dictionary:
+                dictionary[ring] = set(color)
+            else:
+                dictionary[ring].add(color)
+        
+        three_colors = 0
+        for key, value in dictionary.items():
+            if len(value) == 3:
+                three_colors += 1
+        return three_colors
 
-        rods_with_three_colors = 0
-
-        print(hash_map)
-
-        for key, values in hash_map.items():
-            if "R" in values and "G" in values and "B" in values:
-                rods_with_three_colors += 1
-
-        return rods_with_three_colors
+solution = Solution()
+print(solution.countPoints(rings = "B0B6G0R6R0R6G9"))
+print(solution.countPoints(rings = "B0R0G0R9R0B0G0"))
+print(solution.countPoints(rings = "G4"))
