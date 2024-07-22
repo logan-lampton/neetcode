@@ -25,25 +25,43 @@
 # 0 <= sr < m
 # 0 <= sc < n
 
+def floodFill(self, image: [[int]], sr: int, sc: int, color: int) -> [[int]]:
+    initial_color = image[sr][sc]
 
-def floodFill(image: [[int]], sr: int, sc: int, color: int) -> [[int]]:
-    original_color = image[sr][sc]
-
-    if original_color == color:
+    if initial_color == color:
         return image
 
-    def dfs(row, col):
-        if image[row][col] == original_color:
-            image[row][col] = color
-            if row >= 1:
-                dfs(row - 1, col)
-            if row + 1 < len(image):
-                dfs(row + 1, col)
-            if col >= 1:
-                dfs(row, col - 1)
-            if col + 1 < len(image[0]):
-                dfs(row, col + 1)
-
+    def dfs(row, column):
+        if row < 0 or row >= len(image) or column < 0 or column >= len(image[0]) or image[row][column] != initial_color:
+            return
+        image[row][column] = color
+        dfs(row - 1, column)
+        dfs(row + 1, column)
+        dfs(row, column - 1)
+        dfs(row, column + 1)
+    
     dfs(sr, sc)
-
     return image
+
+
+# def floodFill(image: [[int]], sr: int, sc: int, color: int) -> [[int]]:
+#     original_color = image[sr][sc]
+
+#     if original_color == color:
+#         return image
+
+#     def dfs(row, col):
+#         if image[row][col] == original_color:
+#             image[row][col] = color
+#             if row >= 1:
+#                 dfs(row - 1, col)
+#             if row + 1 < len(image):
+#                 dfs(row + 1, col)
+#             if col >= 1:
+#                 dfs(row, col - 1)
+#             if col + 1 < len(image[0]):
+#                 dfs(row, col + 1)
+
+#     dfs(sr, sc)
+
+#     return image
