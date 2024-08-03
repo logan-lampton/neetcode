@@ -28,22 +28,34 @@
 # 1 <= n == nums.length <= 50
 # 1 <= nums[i] <= 50
 
-
 class Solution:
     def distinctDifferenceArray(self, nums: [int]) -> [int]:
+        difference = []
+        left = 0
+        right = 1
+        while right < len(nums) + 1:
+            cur_dif = len(set(nums[0:left + 1])) - len(set(nums[right:]))
+            difference.append(cur_dif)
+            left += 1
+            right += 1
+        return difference
 
-        prefix = set()
-        suffix = set()
-        output = []
 
-        for i in range(len(nums)):
-            prefix = set(nums[0 : i + 1])
-            suffix = set(nums[i + 1 : len(nums)])
-            output.append(len(prefix) - len(suffix))
+# class Solution:
+#     def distinctDifferenceArray(self, nums: [int]) -> [int]:
 
-        return output
+#         prefix = set()
+#         suffix = set()
+#         output = []
+
+#         for i in range(len(nums)):
+#             prefix = set(nums[0 : i + 1])
+#             suffix = set(nums[i + 1 : len(nums)])
+#             output.append(len(prefix) - len(suffix))
+
+#         return output
 
 solution = Solution()
 nums = [1,2,3,4,5]
 
-solution.distinctDifferenceArray(nums)
+print(solution.distinctDifferenceArray(nums))
