@@ -54,3 +54,29 @@ class Solution:
 
         # if nums2 still has elements, add them to nums1
         nums1[: p2 + 1] = nums2[: p2 + 1]
+
+# another method
+    # def merge(self, nums1: [int], m: int, nums2: [int], n: int) -> None:
+    #     """
+    #     Do not return anything, modify nums1 in-place instead.
+    #     """
+    #     nums1_pointer, nums2_pointer = 0, 0
+    #     merged_list = []
+    #     while nums1_pointer < m and nums2_pointer < n:
+    #         if nums1[nums1_pointer] < nums2[nums2_pointer]:
+    #             merged_list.append(nums1[nums1_pointer])
+    #             nums1_pointer += 1
+    #         else:
+    #             merged_list.append(nums2[nums2_pointer])
+    #             nums2_pointer += 1
+        
+    #     while nums1_pointer < m:
+    #         merged_list.append(nums1[nums1_pointer])
+    #         nums1_pointer += 1
+        
+    #     while nums2_pointer < n:
+    #         merged_list.append(nums2[nums2_pointer])
+    #         nums2_pointer += 1
+
+    #     for i in range(len(nums1)):
+    #         nums1[i] = merged_list[i]
