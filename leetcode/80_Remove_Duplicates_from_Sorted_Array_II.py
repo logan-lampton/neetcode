@@ -50,3 +50,21 @@ class Solution:
                 num_dict[nums[i]] += 1
             if num_dict[nums[i]] > 2:
                 nums.remove(nums[i])
+
+# Another way to solve:
+    # def removeDuplicates(self, nums: [int]) -> int:
+    #     i = len(nums) - 2
+    #     j = len(nums) - 1
+    #     number_element = 1
+        
+    #     while i >= 0:
+    #         if nums[i] == nums[j]:
+    #             if number_element == 1:
+    #                 number_element = 2
+    #             else:
+    #                 nums.pop(i)
+    #                 j -= 1
+    #         else:
+    #             number_element = 1
+    #             j = i
+    #         i -= 1
