@@ -27,6 +27,15 @@ class Solution:
             else:
                 return edges[i][1]
 
+# improved solution:
+# class Solution:
+#     def findCenter(self, edges: List[List[int]]) -> int:
+#         for i in range(2):
+#             if edges[0][i] in edges[1]:
+#                 return edges[0][i]
+#             else:
+#                 return edges[0][1]
+
 solution = Solution()
 print(solution.findCenter(edges = [[1,2],[2,3],[4,2]]))
 print(solution.findCenter(edges = [[1,2],[5,1],[1,3],[1,4]]))
