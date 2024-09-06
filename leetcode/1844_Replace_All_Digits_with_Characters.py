@@ -34,45 +34,60 @@
 
 class Solution:
     def replaceDigits(self, s: str) -> str:
+        alphabet = 'abcdefghijklmnopqrstuvwxyz'
+        s_list = list(s)
 
-        answer = ""
+        for i in range(1, len(s), 2):
+            s_list[i] = alphabet[alphabet.index(s_list[i-1]) + int(s[i])]
+        
+        return ''.join(s_list)
 
-        alphabet = [
-            "a",
-            "b",
-            "c",
-            "d",
-            "e",
-            "f",
-            "g",
-            "h",
-            "i",
-            "j",
-            "k",
-            "l",
-            "m",
-            "n",
-            "o",
-            "p",
-            "q",
-            "r",
-            "s",
-            "t",
-            "u",
-            "v",
-            "w",
-            "x",
-            "y",
-            "z",
-        ]
 
-        for i in range(len(s)):
-            if i % 2 == 0:
-                answer += s[i]
-            elif i % 2 != 0:
-                initial_letter = s[i - 1]
-                initial_i = alphabet.index(initial_letter)
-                final_i = initial_i + int(s[i])
-                answer += alphabet[final_i]
+solution = Solution()
+print(solution.replaceDigits(s = "a1c1e1"))
+print(solution.replaceDigits(s = "a1b2c3d4e"))
 
-        return answer
+# class Solution:
+#     def replaceDigits(self, s: str) -> str:
+
+#         answer = ""
+
+#         alphabet = [
+#             "a",
+#             "b",
+#             "c",
+#             "d",
+#             "e",
+#             "f",
+#             "g",
+#             "h",
+#             "i",
+#             "j",
+#             "k",
+#             "l",
+#             "m",
+#             "n",
+#             "o",
+#             "p",
+#             "q",
+#             "r",
+#             "s",
+#             "t",
+#             "u",
+#             "v",
+#             "w",
+#             "x",
+#             "y",
+#             "z",
+#         ]
+
+#         for i in range(len(s)):
+#             if i % 2 == 0:
+#                 answer += s[i]
+#             elif i % 2 != 0:
+#                 initial_letter = s[i - 1]
+#                 initial_i = alphabet.index(initial_letter)
+#                 final_i = initial_i + int(s[i])
+#                 answer += alphabet[final_i]
+
+#         return answer
