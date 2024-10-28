@@ -19,7 +19,7 @@
 
 
 class Solution:
-    def hIndex(self, citations: List[int]) -> int:
+    def hIndex(self, citations: [int]) -> int:
 
         len_citations = len(citations)
         citations.sort()
@@ -32,4 +32,7 @@ class Solution:
                 return len_citations - i
         
         return 0
-            
+
+solution = Solution()
+print(solution.hIndex(citations = [0,1,3,5,6]))
+print(solution.hIndex(citations = [1,2,100]))
