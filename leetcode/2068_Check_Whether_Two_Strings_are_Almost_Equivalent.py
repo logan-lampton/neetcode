@@ -39,31 +39,61 @@
 class Solution:
     def checkAlmostEquivalent(self, word1: str, word2: str) -> bool:
         word1_dict = {}
-        for char in word1:
-            if char not in word1_dict:
-                word1_dict[char] = 1
-            else:
-                word1_dict[char] += 1
-        
         word2_dict = {}
-        for char in word2:
-            if char not in word2_dict:
-                word2_dict[char] = 1
-            else:
-                word2_dict[char] += 1
+
+        def make_dict(string, dictionary):
+            for char in string:
+                if char not in dictionary:
+                    dictionary[char] = 1
+                else:
+                    dictionary[char] += 1
         
-        for key, value in word1_dict.items():
-            if key not in word2_dict and value > 3:
-                return False
-            elif key in word2_dict:
-                if word2_dict[key] > value + 3 or word2_dict[key] < value - 3:
-                    return False
+        make_dict(word1, word1_dict)
+        make_dict(word2, word2_dict)
+
+        def compare_dicts(dictionary, other_dictionary):
+            for key, value in dictionary.items():
+                if key not in other_dictionary:
+                    if value > 3:
+                        return False
+                else:
+                    if abs(value - other_dictionary[key]) > 3:
+                        return False 
+            return True
         
-        for key, value in word2_dict.items():
-            if key not in word1_dict and value > 3:
-                return False
+        comparing_word1 = compare_dicts(word1_dict, word2_dict)
+        comparing_word2 = compare_dicts(word2_dict, word1_dict)
+
+        return comparing_word1 and comparing_word2
+
+# class Solution:
+#     def checkAlmostEquivalent(self, word1: str, word2: str) -> bool:
+#         word1_dict = {}
+#         for char in word1:
+#             if char not in word1_dict:
+#                 word1_dict[char] = 1
+#             else:
+#                 word1_dict[char] += 1
         
-        return True
+#         word2_dict = {}
+#         for char in word2:
+#             if char not in word2_dict:
+#                 word2_dict[char] = 1
+#             else:
+#                 word2_dict[char] += 1
+        
+#         for key, value in word1_dict.items():
+#             if key not in word2_dict and value > 3:
+#                 return False
+#             elif key in word2_dict:
+#                 if word2_dict[key] > value + 3 or word2_dict[key] < value - 3:
+#                     return False
+        
+#         for key, value in word2_dict.items():
+#             if key not in word1_dict and value > 3:
+#                 return False
+        
+#         return True
     
 solution = Solution()
 print(solution.checkAlmostEquivalent(word1 = "aaaa", word2 = "bccb"))
