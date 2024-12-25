@@ -38,19 +38,21 @@
 # -104 <= val <= 104
 # At most 104 calls will be made to add.
 
+import heapq
+
 class KthLargest:
 
-    def __init__(self, k: int, nums: List[int]):
+    def __init__(self, k: int, nums: [int]):
         self.heap = []
         self.kth_highest = k
         for num in nums:
-            heappush(self.heap, num)
+            heapq.heappush(self.heap, num)
             if len(self.heap) > self.kth_highest:
-                heappop(self.heap)
+                heapq.heappop(self.heap)
 
 
     def add(self, val: int) -> int:
-        heappush(self.heap, val)
+        heapq.heappush(self.heap, val)
         if len(self.heap) > self.kth_highest:
-            heappop(self.heap)
+            heapq.heappop(self.heap)
         return self.heap[0]
