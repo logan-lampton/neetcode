@@ -27,33 +27,68 @@
 # 3 <= nums.length <= 3000
 # -105 <= nums[i] <= 105
 
-class Solution:
-    def threeSum(self, nums: [int]) -> [[int]]:
+# class Solution:
+#     def threeSum(self, nums: [int]) -> [[int]]:
         
-        nums.sort()
+#         nums.sort()
 
-        triplets = set()
+#         triplets = set()
 
-        # need three integers to form a triplet
-        for i in range(len(nums) - 2):
-            if i > 0 and nums[i] == nums[i - 1]:
-                continue
-            firstNum = nums[i]
-            j = i + 1
-            k = len(nums) - 1
-            while j < k:
-                secondNum = nums[j]
-                thirdNum = nums[k]
+#         # need three integers to form a triplet
+#         for i in range(len(nums) - 2):
+#             if i > 0 and nums[i] == nums[i - 1]:
+#                 continue
+#             firstNum = nums[i]
+#             j = i + 1
+#             k = len(nums) - 1
+#             while j < k:
+#                 secondNum = nums[j]
+#                 thirdNum = nums[k]
 
-                potentialSum = firstNum + secondNum + thirdNum
+#                 potentialSum = firstNum + secondNum + thirdNum
 
-                if potentialSum > 0:
-                    k -= 1
-                elif potentialSum < 0:
-                    j += 1
-                else:
-                    triplets.add((firstNum, secondNum, thirdNum))
-                    j += 1
-                    k -= 1
+#                 if potentialSum > 0:
+#                     k -= 1
+#                 elif potentialSum < 0:
+#                     j += 1
+#                 else:
+#                     triplets.add((firstNum, secondNum, thirdNum))
+#                     j += 1
+#                     k -= 1
 
-        return triplets
+#         return triplets
+    
+
+# Review / different solution:
+class Solution:
+  def threeSum(self, nums: [int]) -> [[int]]:
+      answer = []
+      nums.sort()
+
+      for i in range(len(nums)):
+          if i > 0 and nums[i] == nums[i - 1]:
+              continue
+          
+          middle = i + 1
+          right = len(nums) - 1
+
+          while middle < right:
+              cur_total = nums[i] + nums[middle] + nums[right]
+
+              if cur_total == 0:
+                  answer.append([nums[i], nums[middle], nums[right]])
+                  middle += 1
+                  while nums[middle] == nums[middle - 1] and middle < right:
+                      middle += 1
+              elif cur_total < 0:
+                  middle += 1
+              else:
+                  right -= 1
+          
+      return answer
+
+
+solution = Solution()
+print(solution.threeSum(nums = [-1,0,1,2,-1,-4]))
+print(solution.threeSum(nums = [0,1,1]))
+print(solution.threeSum(nums = [0,0,0]))
