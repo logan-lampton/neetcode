@@ -45,3 +45,48 @@ class Solution:
             max_length = max(max_length, length)
         
         return max_length
+    
+
+# more naive
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if not s:
+            return 0
+        
+        longest_substring_len = 1
+        left = 0
+        right = 1
+
+        while right < len(s):
+            if s[right] not in s[left:right]:
+                cur_substring_len = right - left + 1
+                if cur_substring_len > longest_substring_len:
+                    longest_substring_len = cur_substring_len
+                right += 1
+            else:
+                left += 1
+                right = left + 1
+        
+        return longest_substring_len
+
+
+# approach with set
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        longest_substring_len = 0
+        left = 0
+        right = 0
+        char_set = set()
+
+        while right < len(s):
+            while s[right] in char_set:
+                char_set.remove(s[left])
+                left += 1
+            
+            char_set.add(s[right])
+
+            cur_substring_len = right - left + 1
+            if cur_substring_len > longest_substring_len:
+                longest_substring_len = cur_substring_len
+            
+            right += 1
