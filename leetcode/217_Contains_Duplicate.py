@@ -27,3 +27,9 @@ def containsDuplicate(nums: [int]) -> bool:
             hash_table[num] = 1
 
     return False
+
+# second method using set:
+class Solution:
+    def containsDuplicate(self, nums: [int]) -> bool:
+        nums_set = set(nums)
+        return len(nums) != len(nums_set)
