@@ -31,3 +31,24 @@ def maxSubArray(nums: [int]) -> int:
             dp[i] = nums[i]
 
     return max(dp)
+
+# additional practice:
+def maxSubArray(self, nums: [int]) -> int:
+        
+        dp = [nums[0]] * len(nums)
+
+        for i in range(1, len(nums)):
+            cur_num = nums[i]
+            prev_dp = dp[i - 1]
+            if cur_num + prev_dp >= cur_num:
+                dp[i] = cur_num + prev_dp
+            else:
+                dp[i] = cur_num
+        
+        max_sum = dp[0]
+
+        for pos_sum in dp:
+            if pos_sum > max_sum:
+                max_sum = pos_sum
+        
+        return max_sum
