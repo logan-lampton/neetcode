@@ -39,3 +39,14 @@ solution = Solution()
 print(solution.twoSum(nums = [2,7,11,15], target = 9))
 print(solution.twoSum(nums = [3,2,4], target = 6))
 print(solution.twoSum(nums = [3,3], target = 6))
+
+# Practice
+class Solution:
+    def twoSum(self, nums: [int], target: int) -> [int]:
+        dictionary = {}
+
+        for i, num in enumerate(nums):
+            if dictionary and (target - num) in dictionary:
+                return [i, dictionary[target - num]]
+            if num not in dictionary:
+                dictionary[num] = i
