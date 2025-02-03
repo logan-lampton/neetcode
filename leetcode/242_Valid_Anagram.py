@@ -44,3 +44,31 @@ class Solution:
 solution = Solution()
 print(solution.isAnagram(s = "anagram", t = "nagaram"))
 print(solution.isAnagram(s = "rat", t = "car"))
+
+
+# Practice
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        s_hash = {}
+        t_hash = {}
+
+        def create_dictionary(string, dictionary):
+            for char in string:
+                if char not in dictionary:
+                    dictionary[char] = 1
+                else:
+                    dictionary[char] += 1
+        
+        create_dictionary(s, s_hash)
+        create_dictionary(t, t_hash)
+
+        def compare_dicts(dictionary1, dictionary2):
+            for key, value in dictionary1.items():
+                if key not in dictionary2:
+                    return False
+                else:
+                    if value != dictionary2[key]:
+                        return False
+            return True
+        
+        return compare_dicts(s_hash, t_hash) and compare_dicts(t_hash, s_hash)
