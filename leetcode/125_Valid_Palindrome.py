@@ -46,3 +46,22 @@ solution = Solution()
 print(solution.isPalindrome(s = "A man, a plan, a canal: Panama"))
 print(solution.isPalindrome(s = "race a car"))
 print(solution.isPalindrome(s = " "))
+
+# Additional practice:
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        formatted_s = ""
+        for char in s:
+            if char.isalnum():
+                formatted_s += char.lower()
+        
+        left = 0
+        right = len(formatted_s) - 1
+
+        while left < right:
+            if formatted_s[left] != formatted_s[right]:
+                return False
+            left += 1
+            right -= 1
+        
+        return True
