@@ -39,3 +39,22 @@ class Solution:
 solution = Solution()
 print(solution.maxProfit(prices = [7,1,5,3,6,4]))
 print(solution.maxProfit(prices = [7,6,4,3,1]))
+
+# practice, slightly different approach:
+class Solution:
+    def maxProfit(self, prices: [int]) -> int:
+        max_profit = 0
+        left = 0
+        right = 1
+
+        while right < len(prices):
+            if prices[left] < prices[right]:
+                cur_profit = prices[right] - prices[left]
+                if max_profit < cur_profit:
+                    max_profit = cur_profit
+                right += 1
+            else:
+                left = right
+                right += 1
+        
+        return max_profit
