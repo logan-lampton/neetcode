@@ -49,3 +49,22 @@ solution = Solution()
 print(solution.maximumDifference(nums = [7,1,5,4]))
 print(solution.maximumDifference(nums = [9,4,3,2]))
 print(solution.maximumDifference(nums = [1,5,2,10]))
+
+# Additional practice:
+class Solution:
+    def maximumDifference(self, nums: [int]) -> int:
+        max_difference = -1
+        left = 0
+        right = 1
+
+        while right < len(nums):
+            if nums[left] < nums[right]:
+                cur_difference = nums[right] - nums[left]
+                if max_difference < cur_difference:
+                    max_difference = cur_difference
+                right += 1
+            else:
+                left = right
+                right += 1
+        
+        return max_difference
