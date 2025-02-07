@@ -46,3 +46,21 @@ solution = Solution()
 print(solution.maxDistance(colors = [1,1,1,6,1,1,1]))
 print(solution.maxDistance(colors = [1,8,3,8,3]))
 print(solution.maxDistance(colors = [0,1]))
+
+# Additional practice:
+class Solution:
+    def maxDistance(self, colors: [int]) -> int:
+        left = 0
+        right = len(colors) - 1
+
+        first_house = colors[0]
+        last_house = colors[len(colors) - 1]
+
+        while colors[right] == first_house and colors[left] == last_house:
+            left += 1
+            right -= 1 
+        
+        if left > right:
+            return left
+        else:
+            return right
