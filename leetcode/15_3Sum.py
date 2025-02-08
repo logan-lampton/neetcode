@@ -92,3 +92,29 @@ solution = Solution()
 print(solution.threeSum(nums = [-1,0,1,2,-1,-4]))
 print(solution.threeSum(nums = [0,1,1]))
 print(solution.threeSum(nums = [0,0,0]))
+
+
+# Practice, slightly different approach
+class Solution:
+    def threeSum(self, nums: [int]) -> [[int]]:
+        
+        nums.sort()
+
+        results = set()
+
+        for i in range(len(nums) - 1):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            left = i + 1
+            right = len(nums) - 1
+            while left < right:
+                cur_sum = nums[i] + nums[left] + nums[right]
+                if cur_sum == 0:
+                    results.add((nums[i], nums[left], nums[right]))
+                    left += 1
+                elif cur_sum < 0:
+                    left += 1
+                else:
+                    right -= 1
+        
+        return list(results)
