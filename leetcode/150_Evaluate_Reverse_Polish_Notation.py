@@ -35,6 +35,7 @@
 # 1 <= tokens.length <= 104
 # tokens[i] is either an operator: "+", "-", "*", or "/", or an integer in the range [-200, 200].
 
+from typing import List
 
 class Solution:
     def evalRPN(self, tokens: [str]) -> int:
@@ -56,4 +57,36 @@ class Solution:
                 elif token == "/":
                     stack.append(trunc(a / b))
 
+        return stack[0]
+
+# Practice / somewhat different method:
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        
+        stack = []
+
+        for token in tokens:
+            if token == "+":
+                second_int = stack.pop()
+                first_int = stack.pop()
+                cur_sum = first_int + second_int
+                stack.append(cur_sum)
+            elif token == "-":
+                second_int = stack.pop()
+                first_int = stack.pop()
+                cur_sum = first_int - second_int
+                stack.append(cur_sum)
+            elif token == "*":
+                second_int = stack.pop()
+                first_int = stack.pop()
+                cur_prod = first_int * second_int
+                stack.append(cur_prod)
+            elif token == "/":
+                second_int = stack.pop()
+                first_int = stack.pop()
+                cur_div = int(first_int / second_int)
+                stack.append(cur_div)
+            else:
+                stack.append(int(token))
+            
         return stack[0]
