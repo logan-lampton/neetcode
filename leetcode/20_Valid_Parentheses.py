@@ -49,3 +49,20 @@ print(solution.isValid(s = "()"))
 print(solution.isValid(s = "()[]{}"))
 print(solution.isValid(s = "(]"))
 print(solution.isValid(s = "([])"))
+
+
+# practice
+class Solution:
+    def isValid(self, s: str) -> bool:
+        dictionary = {')':'(' , '}':'{' , ']': '['}
+        stack = []
+
+        for char in s:
+            if char == "(" or char == "{" or char == "[":
+                stack.append(char)
+            elif stack and stack[-1] == dictionary[char]:
+                stack.pop()
+            else:
+                stack.append(char)
+        
+        return not stack
