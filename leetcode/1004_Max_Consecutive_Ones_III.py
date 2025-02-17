@@ -41,3 +41,23 @@ def longestOnes(nums, k):
 
 
 print(longestOnes(nums=[1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0], k=2))
+
+# Practice/somewhat different approach:
+class Solution:
+    def longestOnes(self, nums: [int], k: int) -> int:
+        max_length = 0
+        cur_zeros = 0
+        left = 0
+
+        for right in range(len(nums)):
+            if nums[right] == 0:
+                cur_zeros += 1
+            while cur_zeros > k:
+                if nums[left] == 0:
+                    cur_zeros -= 1
+                left += 1
+            cur_length = right - left + 1
+            if max_length < cur_length:
+                max_length = cur_length
+        
+        return max_length
