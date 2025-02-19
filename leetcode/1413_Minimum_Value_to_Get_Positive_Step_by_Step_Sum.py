@@ -44,3 +44,16 @@ solution = Solution()
 print(solution.minStartValue(nums = [-3,2,-3,4,2]))
 print(solution.minStartValue(nums = [1,2]))
 print(solution.minStartValue(nums = [1,-2,-3]))
+
+# Practice/new method:
+class Solution:
+    def minStartValue(self, nums: [int]) -> int:
+        lowest_value = 0
+        cur_value = 0
+
+        for num in nums:
+            cur_value += num
+            if lowest_value > cur_value:
+                lowest_value = cur_value
+        
+        return abs(lowest_value) + 1
