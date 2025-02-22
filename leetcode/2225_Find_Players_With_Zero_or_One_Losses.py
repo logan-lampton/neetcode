@@ -65,3 +65,32 @@ class Solution:
 solution = Solution()
 print(solution.findWinners(matches = [[1,3],[2,3],[3,6],[5,6],[5,7],[4,5],[4,8],[4,9],[10,4],[10,9]]))
 print(solution.findWinners(matches = [[2,3],[1,3],[5,4],[6,4]]))
+
+# Practice:
+from typing import List
+
+class Solution:
+    def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
+        all_wins = []
+        one_loss = []
+        hashmap = {}
+        for winner, loser in matches:
+            if winner not in hashmap:
+                hashmap[winner] = [1, 0]
+            elif winner in hashmap:
+                hashmap[winner][0] += 1
+            if loser not in hashmap:
+                hashmap[loser] = [0, 1]
+            elif loser in hashmap:
+                hashmap[loser][1] += 1        
+        
+        for key, value in hashmap.items():
+            if value[1] == 0:
+                all_wins.append(key)
+            elif value[1] == 1:
+                one_loss.append(key)
+        
+        all_wins.sort()
+        one_loss.sort()
+        
+        return [all_wins, one_loss]
