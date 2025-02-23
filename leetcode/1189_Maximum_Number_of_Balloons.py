@@ -37,3 +37,31 @@ print(
         text="krhizmmgmcrecekgyljqkldocicziihtgpqwbticmvuyznragqoyrukzopfmjhjjxemsxmrsxuqmnkrzhgvtgdgtykhcglurvppvcwhrhrjoislonvvglhdciilduvuiebmffaagxerjeewmtcwmhmtwlxtvlbocczlrppmpjbpnifqtlninyzjtmazxdbzwxthpvrfulvrspycqcghuopjirzoeuqhetnbrcdakilzmklxwudxxhwilasbjjhhfgghogqoofsufysmcqeilaivtmfziumjloewbkjvaahsaaggteppqyuoylgpbdwqubaalfwcqrjeycjbbpifjbpigjdnnswocusuprydgrtxuaojeriigwumlovafxnpibjopjfqzrwemoinmptxddgcszmfprdrichjeqcvikynzigleaajcysusqasqadjemgnyvmzmbcfrttrzonwafrnedglhpudovigwvpimttiketopkvqw"
     )
 )
+
+# Practe/different method:
+class Solution:
+    def maxNumberOfBalloons(self, text: str) -> int:
+
+        if "b" not in text or "a" not in text or "l" not in text or "o" not in text or "n" not in text:
+            return 0
+
+        hashmap = {}
+
+        for char in text:
+            if char == "b" or char == "a" or char == "l" or char == "o" or char == "n":
+                if char not in hashmap:
+                    hashmap[char] = 1
+                else:
+                    hashmap[char] += 1
+        
+        number_of_balloons = 0
+
+        while hashmap["b"] > 0 and hashmap["a"] > 0 and hashmap["l"] >= 2 and hashmap["o"] >= 2 and hashmap["n"] > 0:
+            number_of_balloons += 1
+            hashmap["b"] -= 1
+            hashmap["a"] -= 1
+            hashmap["l"] -= 2
+            hashmap["o"] -= 2
+            hashmap["n"] -= 1
+        
+        return number_of_balloons
