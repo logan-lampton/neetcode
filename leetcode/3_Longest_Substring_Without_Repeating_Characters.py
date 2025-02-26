@@ -90,3 +90,22 @@ class Solution:
                 longest_substring_len = cur_substring_len
             
             right += 1
+
+
+# Practice:
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+
+        cur_hash = {}
+        longest_substring = 0
+        lower_index = 0
+
+        for i, char in enumerate(s):
+            if char in cur_hash and cur_hash[char] >= lower_index:
+                lower_index = cur_hash[char] + 1
+            cur_hash[char] = i
+            cur_length = i - lower_index + 1
+            if cur_length > longest_substring:
+                longest_substring = cur_length
+
+        return longest_substring
