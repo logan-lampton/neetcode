@@ -21,3 +21,19 @@ class Solution(object):
             if stone in jewels_set:
                 shared_jewels += 1
         return shared_jewels
+
+# Practice:
+class Solution:
+    def numJewelsInStones(self, jewels: str, stones: str) -> int:
+        jewel_dict = {}
+        for jewel in jewels:
+            if jewel not in jewel_dict:
+                jewel_dict[jewel] = 1
+        
+        num_jewels = 0
+
+        for element in stones:
+            if element in jewel_dict:
+                num_jewels += 1
+        
+        return num_jewels
