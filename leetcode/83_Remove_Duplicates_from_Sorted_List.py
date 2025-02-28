@@ -28,3 +28,24 @@ class Solution:
             else:
                 cur = cur.next
         return head
+    
+
+  # Practice:
+  class Solution:
+    def deleteDuplicates(self, head: [ListNode]) -> [ListNode]:
+
+        if not head:
+            return head
+        
+        seen = set()
+        seen.add(head.val)
+        cur_node = head
+
+        while cur_node and cur_node.next:
+            if cur_node.next.val in seen:
+                cur_node.next = cur_node.next.next
+            else:
+                seen.add(cur_node.next.val)
+                cur_node = cur_node.next
+
+        return head
