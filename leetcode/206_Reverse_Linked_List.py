@@ -36,3 +36,23 @@ class Solution:
             curr = next_node
 
         return prev
+
+
+# Practice:
+class Solution:
+    def reverseList(self, head: [ListNode]) -> [ListNode]:
+        
+        prev = None
+        cur_node = head
+
+        while cur_node:
+            # save the next node, to point to a little later
+            next_node = cur_node.next
+            # set cur_node to point to prev node
+            cur_node.next = prev
+            # move prev node forward
+            prev = cur_node
+            # move cur_node forward
+            cur_node = next_node
+        
+        return prev
