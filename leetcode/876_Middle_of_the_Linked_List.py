@@ -81,3 +81,23 @@ class Solution:
             this_node = this_node.next
 
         return this_node
+
+
+# Practice
+class Solution:
+    def middleNode(self, head: [ListNode]) -> [ListNode]:
+        length = 0
+        cur_node = head
+
+        while cur_node:
+            length += 1
+            cur_node = cur_node.next
+        
+        cur_length_node = head
+        check_length = 0
+        
+        while check_length < (length // 2):
+            check_length += 1
+            cur_length_node = cur_length_node.next
+        
+        return cur_length_node
