@@ -49,3 +49,20 @@ class Solution:
   #               cur_node = cur_node.next
 
   #       return head
+
+# Practice
+class Solution:
+    def deleteDuplicates(self, head: [ListNode]) -> [ListNode]:
+
+        if not head:
+            return head
+        
+        cur_node = head
+        next_node = head.next
+
+        while next_node:
+            if cur_node.val == next_node.val:
+                cur_node.next = next_node.next
+            else:
+                cur_node = cur_node.next
+            next_node = next_node.next
