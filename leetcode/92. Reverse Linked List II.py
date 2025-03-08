@@ -44,3 +44,35 @@ class Solution:
             before_sublist.next = temp_node  # Update the head of the sublist
 
         return dummy_head.next  # Return the new head of the list
+
+# Practice
+class Solution:
+    def reverseBetween(self, head: [ListNode], left: int, right: int) -> [ListNode]:
+        
+        if not head or left == right:
+            return head
+
+        prev_node = None
+        cur_node = head
+
+        for _ in range(left - 1):
+            prev_node = cur_node
+            cur_node = cur_node.next
+        
+        start_node = cur_node
+        reverse_prev = None
+
+        for _ in range(right - left + 1):
+            next_node = cur_node.next
+            cur_node.next = reverse_prev
+            reverse_prev = cur_node
+            cur_node = next_node
+        
+        if prev_node:
+            prev_node.next = reverse_prev
+        else:
+            head = reverse_prev
+        
+        start_node.next = cur_node
+        
+        return head
