@@ -37,3 +37,18 @@ solution = Solution()
 print(solution.missingNumber(nums = [3,0,1]))
 print(solution.missingNumber(nums = [0,1]))
 print(solution.missingNumber(nums = [9,6,4,2,3,5,7,0,1]))
+
+
+# Practice
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        nums_hash = {}
+
+        for num in nums:
+            nums_hash[num] = 1
+        
+        for num in range(0, len(nums)):
+            if num not in nums_hash:
+                return num
+        
+        return len(nums)
