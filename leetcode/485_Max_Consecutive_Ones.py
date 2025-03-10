@@ -31,3 +31,20 @@ class Solution:
 solution = Solution()
 print(solution.findMaxConsecutiveOnes(nums = [1,1,0,1,1,1]))
 print(solution.findMaxConsecutiveOnes(nums = [1,0,1,1,0,1]))
+
+
+# Practice
+class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        max_consecutive = 0
+        cur_consecutive = 0
+        
+        for num in nums:
+            if num == 1:
+                cur_consecutive += 1
+                if max_consecutive < cur_consecutive:
+                    max_consecutive = cur_consecutive
+            else:
+                cur_consecutive = 0
+        
+        return max_consecutive
