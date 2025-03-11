@@ -61,3 +61,32 @@ class Solution:
                 max_length = cur_length
         
         return max_length
+
+
+# Practice:
+class Solution:
+    def longestOnes(self, nums: [int], k: int) -> int:
+        
+        max_consecutive = 0
+        cur_consecutive = 0
+        flips = k
+
+        left = 0
+
+        for right in range(len(nums)):
+            if nums[right] == 1:
+                cur_consecutive += 1
+            else:
+                flips -= 1
+                cur_consecutive += 1
+
+            while flips < 0:
+                if nums[left] == 0:
+                    flips += 1
+                cur_consecutive -= 1
+                left += 1
+                
+            if max_consecutive < cur_consecutive:
+                max_consecutive = cur_consecutive
+            
+        return max_consecutive
