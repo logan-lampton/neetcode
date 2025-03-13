@@ -57,3 +57,19 @@ class Solution:
                 lowest_value = cur_value
         
         return abs(lowest_value) + 1
+    
+# Practice
+class Solution:
+    def minStartValue(self, nums: [int]) -> int:
+        smallest_value = nums[0]
+        running_total = 0
+
+        for num in nums:
+            running_total += num
+            if running_total < smallest_value:
+                smallest_value = running_total
+        
+        if smallest_value > 0:
+            return 1
+        else:
+            return abs(smallest_value) + 1
