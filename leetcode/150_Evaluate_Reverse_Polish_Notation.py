@@ -90,3 +90,27 @@ class Solution:
                 stack.append(int(token))
             
         return stack[0]
+
+
+# Practice
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        
+        stack = []
+        operators = {
+            '+': lambda x, y: x + y,
+            '-': lambda x, y: x - y,
+            '*': lambda x, y: x * y,
+            '/': lambda x, y: x // y if x * y > 0 else -(-x // y)
+        }
+
+        for token in tokens:
+            if token in operators:
+                second_integer = stack.pop()
+                first_integer = stack.pop()
+                cur_result = operators[token](first_integer, second_integer)
+                stack.append(cur_result)
+            else:
+                stack.append(int(token))
+        
+        return stack[0]
