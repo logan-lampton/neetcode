@@ -32,3 +32,33 @@ class Solution(object):
             left += 1
 
         return result
+
+# Practice
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+
+        if len(strs) == 1:
+            return strs[0]
+
+        first_word = strs[0]
+        min_prefix_len = len(strs[0])
+        min_prefix = ""
+        cur_prefix = ""
+
+        for i in range(1, len(strs)):
+            word = strs[i]
+            cur_prefix = ""
+            for i in range(min(len(word), len(first_word))):
+                if first_word[i] == word[i]:
+                    cur_prefix += word[i]
+                else:
+                    break
+            if cur_prefix == "":
+                return ""
+            elif min_prefix == "":
+                min_prefix = cur_prefix
+            else:
+                if len(cur_prefix) < len(min_prefix):
+                    min_prefix = cur_prefix
+        
+        return min_prefix
