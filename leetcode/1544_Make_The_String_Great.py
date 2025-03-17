@@ -53,3 +53,19 @@ solution = Solution()
 print(solution.makeGood(s = "leEeetcode"))
 print(solution.makeGood(s = "abBAcC"))
 print(solution.makeGood(s = "s"))
+
+
+# Practice
+class Solution:
+    def makeGood(self, s: str) -> str:
+        stack = []
+        for char in s:
+            if stack:
+                if char != stack[-1] and char.lower() == stack[-1] or char != stack[-1] and char.upper() == stack[-1]:
+                    stack.pop()
+                else:
+                    stack.append(char)
+            else:
+                stack.append(char)
+        
+        return ''.join(stack)
