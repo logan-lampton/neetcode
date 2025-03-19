@@ -52,3 +52,21 @@ class Solution:
                 p_open += 1
 
         return "".join(stack)
+
+
+# Practice:
+class Solution:
+    def removeOuterParentheses(self, s: str) -> str:
+        stack = []
+        answer = []
+        for char in s:
+            if char == "(":
+                if stack:
+                    answer.append(char)
+                stack.append(char)
+            else:
+                stack.pop()
+                if stack:
+                    answer.append(char)
+        
+        return "".join(answer)
