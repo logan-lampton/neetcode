@@ -52,3 +52,23 @@ class Solution:
 solution = Solution()
 print(solution.nextGreaterElement(nums1 = [4,1,2], nums2 = [1,3,4,2]))
 print(solution.nextGreaterElement(nums1 = [2,4], nums2 = [1,2,3,4]))
+
+# Practice
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        nums2_hash = {}
+        for i in range(len(nums2)):
+            nums2_hash[nums2[i]] = i
+
+        answer = [None] * len(nums1)
+
+        for i in range(len(nums1)):
+            cur_num = nums1[i]
+            for j in range(nums2_hash[cur_num], len(nums2)):
+                if nums2[j] > cur_num:
+                    answer[i] = nums2[j]
+                    break
+            if answer[i] == None:
+                answer[i] = -1
+
+        return answer
