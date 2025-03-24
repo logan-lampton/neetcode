@@ -36,3 +36,27 @@ class Solution:
 
         in_order_traversal(root)
         return dummy.right
+
+# Practice
+class Solution:
+    def increasingBST(self, root: [TreeNode]) -> [TreeNode]:
+        
+        ordered_array = []
+
+        def inorder(node, array) -> None:
+            if node is None:
+                return
+            inorder(node.left, array)
+            ordered_array.append(node.val)
+            inorder(node.right, array)
+
+        inorder(root, ordered_array)
+
+        dummy = TreeNode(-1)
+        current_node = dummy
+
+        for val in ordered_array:
+            current_node.right = TreeNode(val)
+            current_node = current_node.right
+        
+        return dummy.right
