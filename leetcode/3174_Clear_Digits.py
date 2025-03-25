@@ -41,3 +41,19 @@ solution = Solution()
 print(solution.clearDigits(s="abc"))
 print(solution.clearDigits(s = "cb34"))
 print(solution.clearDigits(s="c3po"))
+
+
+# Practice
+class Solution:
+    def clearDigits(self, s: str) -> str:
+        stack = []
+        answer = ''
+
+        for char in s:
+            if char.isalpha():
+                stack.append(char)
+            else:
+                if stack:
+                    stack.pop()
+        
+        return ''.join(stack)
