@@ -16,11 +16,11 @@
 # The number of nodes in the tree is in the range [0, 100].
 # -100 <= Node.val <= 100
 
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 
 
 class Solution:
@@ -37,3 +37,24 @@ class Solution:
                 stack.append(node.left)
 
         return output
+
+
+# Practice
+class Solution:
+    def preorderTraversal(self, root: [TreeNode]) -> List[int]:
+        if not root:
+            return []
+
+        answer = []
+        stack = [root]
+
+        while stack:
+            node = stack.pop()
+            answer.append(node.val)
+
+            if node.right:
+                stack.append(node.right)
+            if node.left:
+                stack.append(node.left)
+        
+        return answer
