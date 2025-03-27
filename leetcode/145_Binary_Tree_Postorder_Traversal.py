@@ -45,3 +45,19 @@ class Solution:
                 stack.append(cur_node.right)
         
         return backwards_answer[::-1]
+    
+
+# Practice recursive
+class Solution:
+    def postorderTraversal(self, root: [TreeNode]) -> [int]:
+        answer = []
+
+        def dfs(node):
+            if not node:
+                return
+            dfs(node.left)
+            dfs(node.right)
+            answer.append(node.val)
+        
+        dfs(root)
+        return answer
