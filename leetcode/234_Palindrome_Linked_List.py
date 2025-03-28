@@ -9,6 +9,10 @@
 # Input: head = [1,2]
 # Output: false
 
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
 class Solution:
     def isPalindrome(self, head: [ListNode]) -> bool:
@@ -54,3 +58,24 @@ class Solution:
     #     prev = prev.next
 
     # return True
+
+# Practice
+class Solution:
+    def isPalindrome(self, head: [ListNode]) -> bool:
+        values = []
+
+        cur_node = head
+        while cur_node:
+            values.append(cur_node.val)
+            cur_node = cur_node.next
+        
+        left = 0
+        right = len(values) - 1
+
+        while left < right:
+            if values[left] != values[right]:
+                return False
+            left += 1
+            right -= 1
+        
+        return True
