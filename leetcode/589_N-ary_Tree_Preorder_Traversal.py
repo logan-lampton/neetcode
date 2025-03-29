@@ -49,4 +49,21 @@ class Solution:
         #         dfs(child, array)
         # dfs(root, output)
         # return output
-                
+
+# Practice
+class Solution:
+    def preorder(self, root: 'Node') -> [int]:
+        if not root:
+            return []
+            
+        answer = []
+        stack = [root]
+
+        while stack:
+            node = stack.pop()
+            answer.append(node.val)
+
+            for i in range(len(node.children) - 1, -1, -1):
+                stack.append(node.children[i])
+            
+        return answer
