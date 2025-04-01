@@ -58,3 +58,23 @@ print(solution.reversePrefix(word="abcdefd", ch="d"))
         #     reverse_pre += through_char[i]
         
         # return reverse_pre + additional_string
+
+
+# Practice
+class Solution:
+    def reversePrefix(self, word: str, ch: str) -> str:
+        ch_index = None
+
+        for i, char in enumerate(word):
+            if char == ch:
+                ch_index = i
+                break
+        
+        if not ch_index:
+            return word
+
+        answer = ""
+        for i in range(ch_index, -1, -1):
+            answer += word[i]
+        
+        return answer + word[ch_index + 1 ::]
