@@ -40,3 +40,18 @@ def finalPrices(prices: [int]) -> [int]:
             answer.append(prices[i])
 
     return answer
+
+# Practice
+class Solution:
+    def finalPrices(self, prices: [int]) -> [int]:
+        final_costs = []
+
+        for i in range(len(prices)):
+            discount = 0
+            for j in range(i + 1, len(prices)):
+                if prices[j] <= prices[i]:
+                    discount = prices[j]
+                    break
+            final_costs.append(prices[i] - discount)
+        
+        return final_costs
