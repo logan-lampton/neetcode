@@ -53,3 +53,23 @@ node1 = TreeNode(1, right=node2)
 
 solution = Solution()
 print(solution.inorderTraversal(root=node1))
+
+
+# Practice
+class Solution:
+    def inorderTraversal(self, root: [TreeNode]) -> [int]:
+        values = []
+        stack = []
+        cur_node = root
+
+        while cur_node or stack:
+            while cur_node:
+                stack.append(cur_node)
+                cur_node = cur_node.left
+            
+            cur_node = stack.pop()
+            values.append(cur_node.val)
+
+            cur_node = cur_node.right
+        
+        return values
