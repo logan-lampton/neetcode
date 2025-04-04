@@ -85,3 +85,25 @@ class Solution:
                 stack.append(char)
 
         return len(stack) == 0
+    
+# Practice
+class Solution:
+    def isValid(self, s: str) -> bool:
+        if not s:
+            return True
+
+        stack = []
+        dictionary = {')':'(', '}':'{', ']':'['}
+
+        for char in s:
+            if char not in dictionary:
+                stack.append(char)
+            else:
+                if stack and stack[-1] != dictionary[char]:
+                    return False
+                elif not stack:
+                    return False
+                else:
+                    stack.pop()
+        
+        return len(stack) == 0
