@@ -55,3 +55,16 @@ class Solution:
             final_costs.append(prices[i] - discount)
         
         return final_costs
+    
+# Practice
+class Solution:
+    def finalPrices(self, prices: [int]) -> [int]:
+        stack = []
+
+        for i in range(len(prices)):
+            while stack and prices[i] <= prices[stack[-1]]:
+                second_index = stack.pop()
+                prices[second_index] -= prices[i]
+            stack.append(i)
+        
+        return prices
