@@ -70,3 +70,22 @@ class Solution:
                     answer.append(char)
         
         return "".join(answer)
+    
+
+# Practice
+class Solution:
+    def removeOuterParentheses(self, s: str) -> str:
+        stack = []
+        answer = ""
+
+        for char in s:
+            if char == "(":
+                if stack:
+                    answer += char
+                stack.append(char)
+            else:
+                stack.pop()
+                if stack:
+                    answer += char
+
+        return answer
