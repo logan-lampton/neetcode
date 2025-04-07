@@ -78,3 +78,26 @@ class Solution:
             answer += word[i]
         
         return answer + word[ch_index + 1 ::]
+
+# Practice
+class Solution:
+    def reversePrefix(self, word: str, ch: str) -> str:
+        answer = ""
+        stack = []
+        post = ""
+
+        for i, char in enumerate(word):
+            if char != ch:
+                stack.append(char)
+            else:
+                stack.append(char)
+                post = word[i + 1::]
+                break
+            if i == len(word) - 1 and char != ch:
+                return word
+        
+        reverse_pre = ""
+        for i in range(len(stack) - 1, -1, -1):
+            reverse_pre += stack[i]
+        
+        return reverse_pre + post
