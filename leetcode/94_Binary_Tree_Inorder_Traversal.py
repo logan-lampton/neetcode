@@ -73,3 +73,29 @@ class Solution:
             cur_node = cur_node.right
         
         return values
+    
+
+class Solution:
+    def inorderTraversal(self, root: [TreeNode]) -> [int]:
+        if not root:
+            return []
+        
+        values = []
+        stack = []
+        cur_node = root
+
+        while stack or cur_node:
+            # go through all nodes left
+            while cur_node:
+                stack.append(cur_node)
+                cur_node = cur_node.left
+            
+            # pop the top node in the stack and add its value to the answer
+            current = stack.pop()
+            values.append(current.val)
+            
+            # visit the right child nodes
+            cur_node = current.right
+            
+        return values
+            
