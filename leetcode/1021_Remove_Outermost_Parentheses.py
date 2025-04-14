@@ -89,3 +89,22 @@ class Solution:
                     answer += char
 
         return answer
+    
+# Practice
+class Solution:
+    def removeOuterParentheses(self, s: str) -> str:
+        
+        stack = []
+        open_par = 0
+
+        for char in s:
+            if char == "(" and open_par > 0:
+                stack.append(char)
+            if char == ")" and open_par > 1:
+                stack.append(char)
+            if char == "(":
+                open_par += 1
+            else:
+                open_par -= 1
+        
+        return "".join(stack)
