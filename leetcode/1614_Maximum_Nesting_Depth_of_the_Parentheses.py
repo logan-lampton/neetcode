@@ -42,3 +42,19 @@ class Solution:
             max_p = max(max_p, current_p)
 
         return max_p
+
+# Practice
+class Solution:
+    def maxDepth(self, s: str) -> int:
+        max_level = 0
+        level = 0
+
+        for char in s:
+            if char == "(":
+                level += 1
+                if level > max_level:
+                    max_level = level
+            elif char ==")":
+                level -= 1
+
+        return max_level
