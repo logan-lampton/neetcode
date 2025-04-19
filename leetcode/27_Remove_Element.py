@@ -21,3 +21,15 @@ class Solution:
                 front_index += 1
         
         return front_index
+    
+# Practice
+class Solution:
+    def removeElement(self, nums: [int], val: int) -> int:
+        
+        for i in range(len(nums) - 1, - 1, - 1):
+            if nums[i] == val:
+                nums[i] = ""
+        
+        for i in range(len(nums) - 1, -1, -1):
+            if nums[i] == "":
+                nums.pop(i)
