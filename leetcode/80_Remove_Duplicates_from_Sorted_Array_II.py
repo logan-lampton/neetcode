@@ -68,3 +68,22 @@ class Solution:
     #             number_element = 1
     #             j = i
     #         i -= 1
+
+
+# Practice
+class Solution:
+    def removeDuplicates(self, nums: [int]) -> int:
+        counter = 1
+        insert_index = 1
+
+        for i in range(1, len(nums)):
+            if nums[i] == nums[i - 1]:
+                counter += 1
+            else:
+                counter = 1
+            
+            if counter <= 2:
+                nums[insert_index] = nums[i]
+                insert_index += 1
+        
+        return insert_index
