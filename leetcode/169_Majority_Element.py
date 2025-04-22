@@ -36,3 +36,24 @@ class Solution(object):
 solution = Solution()
 
 print(solution.majorityElement([3, 2, 3]))
+
+
+# Practice
+class Solution:
+    def majorityElement(self, nums: [int]) -> int:
+        elements_dict = {}
+        for num in nums:
+            if num not in elements_dict:
+                elements_dict[num] = 1
+            else:
+                elements_dict[num] += 1
+        
+        max_val = 0
+        answer = 0
+
+        for key, value in elements_dict.items():
+            if value > max_val:
+                max_val = value
+                answer = key
+        
+        return answer
