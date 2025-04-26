@@ -58,3 +58,21 @@ class Solution:
                 right += 1
         
         return max_profit
+
+# Practice
+class Solution:
+    def maxProfit(self, prices: [int]) -> int:
+        left = 0
+        right = 1
+        max_profit = 0
+
+        while right < len(prices):
+            if prices[left] < prices[right]:
+                cur_profit = prices[right] - prices[left]
+                if max_profit < cur_profit:
+                    max_profit = cur_profit
+            else:
+                left = right
+            right += 1
+
+        return max_profit
