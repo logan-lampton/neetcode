@@ -34,3 +34,12 @@ class Solution:
 
         # return the length of the last word
         return len(last_word)
+
+
+# Practice
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        s_array = s.split()
+
+        for i in range(len(s_array) - 1, -1, -1):
+            return len(s_array[i])
