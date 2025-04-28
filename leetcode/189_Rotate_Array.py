@@ -42,3 +42,16 @@ class Solution:
         # inserting/popping also not a good method time wise, as it is 0N^2
         # for i in range(k):
         #     nums.insert(0, nums.pop())
+
+# Practice
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        # to deal with k being longer than nums; cut down on operations if we did go through loops
+        k = k % len(nums)
+        
+        nums_prefix = nums[-k:]
+        nums_postfix = nums[: -k]
+        nums[:] = nums_prefix + nums_postfix
