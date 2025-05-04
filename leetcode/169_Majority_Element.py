@@ -57,3 +57,19 @@ class Solution:
                 answer = key
         
         return answer
+
+# Practice
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        count = 0
+        cur_candidate = None
+
+        for num in nums:
+            if count == 0:
+                cur_candidate = num
+            if num == cur_candidate:
+                count += 1
+            else:
+                count -= 1
+        
+        return cur_candidate
