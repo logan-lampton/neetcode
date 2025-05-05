@@ -76,3 +76,18 @@ class Solution:
             right += 1
 
         return max_profit
+
+# Practice with dp
+class Solution:
+    def maxProfit(self, prices: [int]) -> int:
+        dp = [0] * len(prices)
+        dp[0] = 0
+        min_price = prices[0]
+
+        for i in range(1, len(prices)):
+            if prices[i] < min_price:
+                min_price = prices[i]
+            else:
+                dp[i] = prices[i] - min_price
+        
+        return max(dp)
