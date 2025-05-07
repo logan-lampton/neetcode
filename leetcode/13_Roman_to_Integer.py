@@ -87,3 +87,61 @@ solution = Solution()
 print(solution.romanToInt(s = "III"))
 print(solution.romanToInt(s = "LVIII"))
 print(solution.romanToInt(s = "MCMXCIV"))
+
+
+# Practice
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        integer_answer = 0
+
+        dictionary = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+        index = 0
+
+        while index < len(s):
+            if s[index] == "I":
+                if index < len(s) - 1:
+                    if s[index + 1] == "V":
+                        integer_answer += 4
+                        index += 2
+                    elif s[index + 1] == "X":
+                        integer_answer += 9
+                        index += 2
+                    else:
+                        integer_answer += dictionary[s[index]]
+                        index += 1
+                else:
+                    integer_answer += dictionary[s[index]]
+                    index += 1
+            elif s[index] == "X":
+                if index < len(s) - 1:
+                    if s[index + 1] == "L":
+                        integer_answer += 40
+                        index += 2
+                    elif s[index + 1] == "C":
+                        integer_answer += 90
+                        index += 2
+                    else:
+                        integer_answer += dictionary[s[index]]
+                        index += 1
+                else:
+                    integer_answer += dictionary[s[index]]
+                    index += 1
+            elif s[index] == "C":
+                if index < len(s) - 1:
+                    if s[index + 1] == "D":
+                        integer_answer += 400
+                        index += 2
+                    elif s[index + 1] == "M":
+                        integer_answer += 900
+                        index += 2
+                    else:
+                        integer_answer += dictionary[s[index]]
+                        index += 1
+                else:
+                    integer_answer += dictionary[s[index]]
+                    index += 1
+            else:
+                integer_answer += dictionary[s[index]]
+                index += 1
+
+        return integer_answer
