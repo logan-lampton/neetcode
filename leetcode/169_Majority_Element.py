@@ -73,3 +73,23 @@ class Solution:
                 count -= 1
         
         return cur_candidate
+
+# Practice:
+class Solution:
+    def majorityElement(self, nums: [int]) -> int:
+        hashmap = {}
+        for i in range(len(nums)):
+            if nums[i] not in hashmap:
+                hashmap[nums[i]] = 1
+            else:
+                hashmap[nums[i]] += 1
+        
+        max_value = 0
+        answer = 0
+
+        for key, value in hashmap.items():
+            if value > max_value:
+                max_value = value
+                answer = key
+
+        return answer
