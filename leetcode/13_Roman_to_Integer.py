@@ -145,3 +145,35 @@ class Solution:
                 index += 1
 
         return integer_answer
+    
+# Practice:
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        dictionary = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+        answer = 0
+        index = len(s) - 1
+
+        while index >= 0:
+            if index > 0 and s[index] == "V" and s[index - 1] == "I":
+                answer += 4
+                index -= 1
+            elif index > 0 and s[index] == "X" and s[index - 1] == "I":
+                answer += 9
+                index -= 1
+            elif index > 0 and s[index] == "L" and s[index - 1] == "X":
+                answer += 40
+                index -= 1
+            elif index > 0 and s[index] == "C" and s[index - 1] == "X":
+                answer += 90
+                index -= 1
+            elif index > 0 and s[index] == "D" and s[index - 1] == "C":
+                answer += 400
+                index -= 1
+            elif index > 0 and s[index] == "M" and s[index - 1] == "C":
+                answer += 900
+                index -= 1
+            else:
+                answer += dictionary[s[index]]
+            index -= 1
+            
+        return answer
