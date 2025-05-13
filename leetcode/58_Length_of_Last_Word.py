@@ -43,3 +43,16 @@ class Solution:
 
         for i in range(len(s_array) - 1, -1, -1):
             return len(s_array[i])
+
+# Practice:
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        length = 0
+
+        for i in range(len(s) - 1, -1, -1):
+            if s[i] == " " and length > 0:
+                break
+            elif s[i] != " ":
+                length += 1
+
+        return length
