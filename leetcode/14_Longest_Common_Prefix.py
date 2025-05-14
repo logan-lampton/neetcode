@@ -62,3 +62,19 @@ class Solution:
                     min_prefix = cur_prefix
         
         return min_prefix
+    
+
+# Practice
+class Solution:
+    def longestCommonPrefix(self, strs: [str]) -> str:
+        common_prefix = strs[0]
+
+        for i in range(1, len(strs)):
+            shared_index = 0
+            while shared_index < len(common_prefix) and shared_index < len(strs[i]) and common_prefix[shared_index] == strs[i][shared_index]:
+                shared_index += 1
+            common_prefix = common_prefix[:shared_index]
+            if common_prefix == "":
+                break
+        
+        return common_prefix
