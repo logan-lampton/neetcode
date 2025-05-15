@@ -28,3 +28,22 @@ class Solution(object):
                 return i
 
         return -1
+
+
+# Practice:
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        if haystack == needle:
+            return 0
+        
+        for i in range(len(haystack)):
+            if haystack[i] == needle[0]:
+                haystack_index = i
+                needle_index = 0
+                while haystack_index <= len(haystack) - 1 and haystack[haystack_index] == needle[needle_index]:
+                    if needle_index == len(needle) - 1:
+                        return i
+                    haystack_index += 1
+                    needle_index += 1
+        
+        return -1
