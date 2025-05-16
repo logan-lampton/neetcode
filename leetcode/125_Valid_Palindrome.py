@@ -65,3 +65,23 @@ class Solution:
             right -= 1
         
         return True
+
+# Practice:
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        s_alnum = ""
+        for char in s:
+            if char.isalnum():
+                s_alnum += char.lower()
+        
+        left = 0
+        right = len(s_alnum) - 1
+
+        while left < right:
+            if s_alnum[left] != s_alnum[right]:
+                return False
+            else:
+                left += 1
+                right -= 1
+        
+        return True
