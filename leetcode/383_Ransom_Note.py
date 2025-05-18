@@ -44,3 +44,24 @@ class Solution:
             hashmap[char] -= 1
         
         return True
+
+
+# Practice:
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        magazine_hash = {}
+        for char in magazine:
+            if char not in magazine_hash:
+                magazine_hash[char] = 1
+            else:
+                magazine_hash[char] += 1
+        
+        for char in ransomNote:
+            if char not in magazine_hash:
+                return False
+            elif magazine_hash[char] == 0:
+                return False
+            else:
+                magazine_hash[char] -= 1
+        
+        return True
