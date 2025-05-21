@@ -72,3 +72,34 @@ class Solution:
             return True
         
         return compare_dicts(s_hash, t_hash) and compare_dicts(t_hash, s_hash)
+
+
+# Practice:
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+
+        def create_hash(string):
+            new_hash = {}
+            for char in string:
+                if char not in new_hash:
+                    new_hash[char] = 1
+                else:
+                    new_hash[char] += 1
+            return new_hash
+        
+        s_hash = create_hash(s)
+        t_hash = create_hash(t)
+
+        def compare_hashmaps(hashmap1, hashmap2):
+            for key, value in hashmap1.items():
+                if key not in hashmap2:
+                    print(key)
+                    return False
+                elif hashmap2[key] != value:
+                    return False
+            return True
+        
+        s_valid = compare_hashmaps(s_hash, t_hash)
+        t_valid = compare_hashmaps(t_hash, s_hash)
+
+        return s_valid & t_valid
